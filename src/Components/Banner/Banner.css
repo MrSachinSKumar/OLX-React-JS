@@ -1,0 +1,108 @@
+.popup-arrow
+{
+  display: none;
+} 
+
+.bannerParentDiv {
+padding-top: 74px;
+}
+
+.bannerParentDiv .bannerChildDiv .menuBar {
+  display: flex;
+  padding: 10px 16px 10px 40px;
+  background: white;
+  border-top: 1px solid #dedede;
+  border-bottom: 1px solid #dedede
+}
+
+.bannerParentDiv .bannerChildDiv .menuBar .categoryMenu 
+{
+  margin-right: 30px;
+}
+
+.categoryMenu 
+{
+  cursor: pointer;
+}
+
+.categoryMenu>button
+{
+  padding: 0;
+}
+
+.bannerParentDiv .bannerChildDiv .menuBar .categoryMenu span {
+  margin-right: 6px;
+  font-weight: bolder;
+  font-size: 14px;
+}
+
+.otherQuickOptions>span
+{
+  cursor: pointer;
+  font-size: 14px;
+  padding-right: 15px;
+}
+
+.bannerChildDiv .banner {
+  position: relative;
+  width: 100vw;
+}
+.bannerChildDiv .banner img{
+  width: 100vw;
+}
+
+@media only screen and (max-width: 700px) {
+  .otherQuickOptions {
+    display: none;
+  }
+}
+
+.all_category
+{
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 25px;
+  padding-right: 10rem;
+  padding-bottom: 0;
+}
+.property_div
+{
+  padding-bottom: 30px;
+}
+.property_div>p
+{
+  font-size: 14px;
+  margin-bottom: 4px;
+  cursor: pointer;
+}
+
+.property_div>p:hover
+{
+  color: #00a49f;
+}
+.property_heading>p
+{
+  font-size: 15px;
+  padding-bottom: 8px;
+  margin:0;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.property_heading>p:hover
+{
+  color: #00a49f;
+}
+
+.service_div>p
+{
+  font-size: 14px;
+  margin-bottom: 4px;
+  cursor: pointer;
+}
+
+.service_div>p:hover
+{
+  color: #00a49f;
+}

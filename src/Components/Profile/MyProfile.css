@@ -1,0 +1,223 @@
+.MyProfile_Main
+{
+    display: flex;
+    padding: 35px;
+    padding-top: 50px;
+}
+
+.MyProfile_Left
+{
+    width: 22%;
+    align-items: center;
+}
+
+.MyProfile_Right
+{
+    align-items: center;
+    width: 77%;
+    margin-left: 15px;
+}
+
+.MyProfile_Avatar
+{
+   margin-bottom: 5rem;
+}
+
+.MyProfile_Avatar>button
+{
+   -ms-transform: translateY(-150%);
+   transform: translateY(-50%);
+   transform: translateX(200%);
+}
+
+.MyProfile_Friends
+{
+    border: 1px solid rgba(14, 4, 5, 0.2);
+
+}
+
+.MyProfile_Linked
+{
+    border: 1px solid rgba(14, 4, 5, 0.2);
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.MyProfile_Friends_Heading
+{
+    background-color: rgba(0,47,52,.03);
+}
+
+.MyProfile_Friends_Heading>p
+{
+    font-size: 14px;
+    font-weight: 700;
+    color: #002f34;
+    padding: 5px;
+    padding-left: 10px;
+}
+
+.MyProfile_Linked_Heading
+{
+    background-color: rgba(0,47,52,.03);
+}
+
+.MyProfile_Linked_Heading>p
+{
+    font-size: 14px;
+    font-weight: 700;
+    color: #002f34;
+    padding: 5px;
+    padding-left: 10px;
+}
+
+.MyProfile_Followers
+{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.MyProfile_Followers>p
+{
+    font-size: 12px;
+    color: gray;
+    margin: 0;
+}
+
+.MyProfile_Followers>svg
+{
+    float: right;
+    margin-left: auto;
+    color: #002f34;
+}
+
+.MyProfile_Followers>p1
+{
+    margin-left: auto;
+    float: right;
+    font-size: 12px;
+    color: #002f34;
+    font-weight: 700;
+}
+
+.MyProfile_Followers_Main
+{
+    padding: 10px;
+    padding-bottom: 0;
+    padding-top: 0
+}
+
+.MyProfile_Member
+{
+    padding: 10px;
+    text-align: center;
+}
+
+.MyProfile_Member>p
+{
+    font-size: 12px;
+    margin: 0;
+}
+
+.MyProfile_Share
+{
+    padding: 15px;
+    text-align: center;
+    width: 50%;
+    margin: auto;
+}
+
+.MyProfile_Share>p
+{
+    font-size: 14px;
+    font-weight: 600;
+    border-bottom: 2px solid #002f34;
+    margin: 0;
+}
+
+.MyProfile_Share>p:hover
+{
+    border-style: none;
+    cursor: pointer;
+    margin-bottom: 2px;
+}
+
+.MyProfile_Linked_Accounts
+{
+padding: 10px;
+padding-bottom: 5px;
+padding-top: 0;
+}
+
+
+.MyProfile_User_Details
+{
+    display: flex;
+    align-items: center;
+    padding-bottom: 30px;
+    border-bottom: 1px solid gray
+}
+
+.MyProfile_User_Details>h1
+{
+    margin-top: 20px;
+}
+
+.MyProfile_User_Details>button
+{
+   margin-left: 15px;
+}
+
+
+.MyProfile_Ad_Details
+{
+    align-items: center;
+    text-align: center;
+   height: 100%;
+   padding-top: 6rem;
+}
+
+.MyProfile_Ad_Details>p
+{
+    font-size: 17px;
+    font-weight: 700;
+    color: gray;
+}
+
+.MyProfile_Ad_Details>p1
+{
+    font-size: 15px;
+    color: gray;
+}
+
+.MyProfile_Ad_Details>button
+{
+    width: 7rem;
+    height: 50px;
+    background-color: white;
+    border-radius: 4px;
+    border: 2px solid #002f34;
+    font-weight: 600;
+    font-size: 15px;
+    color: #002f34;
+    margin-top: 15px;
+}
+
+.MyProfile_User_Details>button
+{
+    width: 6rem;
+    height: 42px;
+    background-color: white;
+    border-radius: 4px;
+    border: 2px solid #002f34;
+    font-weight: 600;
+    font-size: 14px;
+    color: #002f34;
+    margin-top: 15px;
+}
+
+.MyProfile_User_Details>p
+{
+margin: 0;
+}

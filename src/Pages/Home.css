@@ -1,0 +1,8 @@
+.homeParentDiv
+{
+    background-color: white;
+    position:relative;
+    box-sizing: border-box;
+    width: 100%;
+    overflow-x: hidden;
+}

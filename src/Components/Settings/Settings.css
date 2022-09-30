@@ -1,0 +1,83 @@
+.settings_container
+{
+    display: flex;
+    margin: 30px;
+    margin-left: 50px;
+}
+.privacy
+{
+    margin-right: 50px;
+    width: 265px;
+}
+.privacy>p
+{
+    font-weight: 400;
+    margin-bottom: 7px;
+    cursor: pointer;
+}
+
+.privacy>p:hover
+{
+    font-weight: 700;
+}
+
+.password
+{
+    border: 1px solid #dedede;
+    width: 930px;
+    border-radius: 4px;
+}
+
+.change
+{
+    padding: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-bottom: 1px solid #dedede;
+}
+
+.change>p
+{
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.new_password
+{
+    padding: 25px;
+}
+
+.new_password>input
+{
+    width: 880px;
+    height: 48px;
+    border-radius: 4px;
+    border: 1px solid gray;
+    padding: 10px;
+    margin-bottom: 35px;
+}
+
+.new_password>p
+{
+    margin: 0;
+    margin-top: -36px;
+    font-size: 12px;
+    color: gray;
+}
+
+.new_password>button
+{
+    width: 150px;
+    height: 50px;
+    border-radius: 4px;
+    border: 1px solid #002f34;
+    background: #002f34;
+    color: white;
+    font-weight: 700;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+
+

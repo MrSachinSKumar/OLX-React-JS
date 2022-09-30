@@ -1,0 +1,201 @@
+.footerParentDiv {
+  width: 100%;
+}
+.footerParentDiv .content {
+  display: flex;
+  justify-content: space-between;
+  background: #ebeeef;
+  padding: 16px;
+  padding-top: 15px;
+  padding-left: 70px;
+  padding-right: 70px;
+  padding-bottom: 15px;
+}
+.footerParentDiv .content .heading {
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+.footerParentDiv .footer {
+  display: flex;
+  padding: 10px;
+  background: #002f34;
+  color: whitesmoke;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 70px;
+  padding-right: 90px;
+}
+
+.footerParentDiv .footer p 
+{
+  margin: 0;
+  font-size: 12px;
+}
+
+.list
+{
+  cursor: pointer;
+  padding: 0px;
+  margin: 0px;
+}
+
+.list>ul
+{
+  list-style-type:none;
+  margin: 0;
+  padding: 0;
+  color: #002f34;
+  font-size: 12px;
+}
+
+.list>li 
+{
+  margin: 0; 
+  padding: 0;
+}
+
+.list>p
+{
+  font-size: 14px;
+  font-weight: bolder;
+  height: 15px;
+}
+
+
+.list2
+{
+  padding: 0px;
+  margin: 0px;
+}
+
+.follow>p
+{
+  font-size: 14px;
+  font-weight: bolder;
+  height: 0px;
+  padding: 0;
+}
+
+.other
+{
+  margin-right: 12px;
+  float: left;
+}
+
+.other>p
+{
+  margin: 0;
+  font-size: 12px;
+  font-weight: bolder;
+}
+
+.rights
+{
+  margin-left: auto;
+}
+
+.app_store1>a1
+{
+  text-decoration: none;
+  color: white;
+  text-align:left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 7px;
+}
+
+.app_store1>a2
+{
+  text-decoration: none;
+  color: white;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: bolder;
+  font-size: 11px;
+}
+
+.google_play1
+{
+  border-radius: 6px;
+  float:left;
+  margin-right: 10px;
+  margin-top: 40px;
+  background: black;
+  width: 100px;
+  padding-left: 30px;
+  padding-top: 4px;
+  padding-bottom: 2px;
+  padding-right: 7px;
+  cursor: pointer; 
+}
+
+.app_store1
+{
+  border-radius: 6px;
+  float:left;
+  margin-top: 40px;
+  background: black;
+  width: 100px;
+  padding-left: 30px;
+  padding-top: 1px;
+  padding-bottom: 2px;
+  padding-right: 7px;
+  cursor: pointer;
+}
+
+.google_play1>a1
+{
+  text-decoration: none;
+  color: white;
+  text-align:left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 5px;
+}
+
+.google_play1>a2
+{
+  text-decoration: none;
+  color: white;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: bolder;
+  font-size: 11px;
+}
+
+.google
+{
+  float: left;
+  padding-top: 55px;
+  margin-right: 0;
+  padding-right: 0;
+}
+
+.icons
+{
+  padding: 0px;
+  margin: 0px;
+}
+
+.icons>a
+{
+  margin-right: 7px;
+}
+
+.icons>img
+{
+ margin-right: 7px;
+ cursor: pointer;
+}
+
+.socialmedia_icon
+{
+  margin-bottom: 35px;
+}
