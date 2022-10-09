@@ -49,7 +49,7 @@ function Create(props)
     })
   }
 
-  const createChat=()=>
+  const exitPage=()=>
   {
       if (window.confirm("Are you sure you want to leave? Your progress will not be saved")) 
       {
@@ -61,7 +61,7 @@ function Create(props)
     <div>
       <div className='footer_header'>
         <IconButton>
-          <ArrowBack onClick={createChat}/>
+          <ArrowBack onClick={exitPage}/>
         </IconButton>
       </div>
       <div className='post_ad'>
@@ -126,7 +126,7 @@ function Create(props)
           <div className="category_ad_upload">
             <p>UPLOAD PHOTO</p>
 
-            <img alt="Posts" width="200px" height="200px" src={image? URL.createObjectURL(image):"  "}></img>
+            <img alt="" width="200px" height="200px" src={image? URL.createObjectURL(image):"  "}></img>
             <br />
             <input onChange={(e)=>{
               setImage(e.target.files[0])

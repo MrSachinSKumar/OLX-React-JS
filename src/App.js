@@ -38,12 +38,12 @@ function App()
           <Route element={<Login/>} path='/login'/>
           <Route element={<Create/>} path='/create'/>
           <Route element={<ViewPost/>} path='/view'/>
-          <Route element={<Ads/>} path='/myads'/>
-          <Route element={<Profile/>} path='/profile'/>
+          <Route element={<Ads/>} path='/myads/:userId'/>          
+          <Route element={<Profile/>} path='/profile/:userId'/>
           <Route element={<Settings/>} path='/settings'/>
           <Route element={<CreateAd/>} path='/post'/>
           <Route element={<ViewAd/>} path='/view-ad'/>
-          <Route element={<Edit/>} path='/edit'/>
+          <Route element={<Edit/>} path='/edit/:productId'/>
           <Route element={<MyProfile/>} path='/my-profile'/>
         </Routes>
       </Router>

@@ -4,9 +4,10 @@ import React, { useContext, useState } from 'react'
 import './Ads.css';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import { useNavigate } from 'react-router-dom';
-import { AuthContext, FirebaseContext } from '../../Store/Context';
+import { useLocation, useNavigate} from 'react-router-dom';
+import { FirebaseContext } from '../../Store/Context';
 import { PostContext } from '../../Store/PostContext';
+import { useEffect } from 'react';
 
 function Ads() 
 {
@@ -14,23 +15,28 @@ function Ads()
   const {setPostDetails}=useContext(PostContext)
   const [products, setProducts] = useState([])
   const navigate=useNavigate()
-  const {user} = useContext(AuthContext)
   const {postDetails} = useContext(PostContext)
 
-const getProducts=()=>
- {
-  firebase.firestore().collection('products').where('userId','==',user.uid).get().then((snapshot)=>
+  const location=useLocation()
+  const LoggedinUser=location.pathname
+  const url=LoggedinUser
+  const path = url.split("/");
+  const userId=path[2]
+
+  useEffect(() => 
   {
-    const allPost=snapshot.docs.map((product)=>
+    firebase.firestore().collection('products').where('userId','==',userId).get().then((snapshot)=>
     {
-      return{
-        ...product.data(),
-        id:product.id
-      }
+      const allPost=snapshot.docs.map((product)=>
+      {
+        return{
+          ...product.data(),
+          id:product.id
+        }
+      })
+      setProducts(allPost)
     })
-    setProducts(allPost)
-  })
-};
+  }, [userId,firebase])
 
 const handleDelete=()=>
   {
@@ -44,7 +50,7 @@ const handleDelete=()=>
   return (
     <div className='ads_container'>
       <div className='ads_headers'>
-        <button onClick={getProducts} >ADS</button>
+        <button>ADS</button>
         <button>FAVOURITES</button>
       </div>
 
@@ -117,7 +123,7 @@ const handleDelete=()=>
                         <p onClick={()=>
                                         {
                                           setPostDetails(product)
-                                          navigate('/edit')
+                                          navigate(`/edit/${product.id}`)
                                         }}>Edit</p>
                         <p onClick={handleDelete}>Remove</p>
                         <div className='download_lead'>
@@ -147,7 +153,7 @@ const handleDelete=()=>
                         <button  onClick={()=>
                                         {
                                           setPostDetails(product)
-                                          navigate('/edit')
+                                          navigate(`/edit/${product.id}`)
                                         }}>Edit now</button>
                       </div>
                     </div>

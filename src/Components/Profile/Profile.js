@@ -1,7 +1,8 @@
 import { ArrowForwardIos, TipsAndUpdatesOutlined } from '@mui/icons-material'
 import { IconButton } from '@mui/material'
 import React, { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { AuthContext, FirebaseContext } from '../../Store/Context'
 import './Profile.css'
 
@@ -14,21 +15,65 @@ const [name, setName] = useState('')
 const [about, setAbout] = useState('')
 const [number, setNumber] = useState('')
 const [email, setEmail] = useState('')
+const [userDetails, setUserDetails] = useState(null)
+
+const location=useLocation()
+const LoggedinUser=location.pathname
+const url=LoggedinUser
+const path = url.split("/");
+const userId=path[2]
+
+useEffect(() => 
+{
+    firebase.firestore().collection('users').where('id','==', userId).get().then((querySnapshot)=> 
+    {
+        querySnapshot.forEach((doc)=> 
+        {
+            setUserDetails(doc.data())
+        });
+    })
+    .catch((error)=> 
+    {
+        console.log("Error getting documents: ", error);
+    });
+}, [userId,firebase])
+
+if (!userDetails) return <img src="https://loading.io/icon/tcjp3h" alt="" />
+
+console.log(userDetails);
 
 const handleSubmit=()=>
 {
-    firebase.firestore().collection('users').where('id','==', user.uid).get().then(function(querySnapshot){
-        querySnapshot.forEach(function(document){
-        document.ref.update({
-        username: name,
-        about: about,
-        phone: number,
-        email: email,
-    })
-    })
-    })
-    alert("Details updated")
-    navigate('/')  
+    if(name==='' && about==='' && number==='' && email==='')
+    {
+        alert("All fields are empty")
+    }
+    else if(name==='' || about==='' || number==='' || email==='')
+    {
+        alert("All fields are mandatory")
+    }else
+    {
+        firebase.firestore().collection('users').where('id','==', user.uid).get().then(function(querySnapshot){
+            querySnapshot.forEach(function(document){
+            document.ref.update({
+            username: name,
+            about: about,
+            phone: number,
+            email: email,
+        })
+        })
+        })
+        alert("Details updated")
+        navigate('/')  
+    }
+}
+
+const clearDetails=()=>
+{
+    setName('')
+    setAbout('')
+    setNumber('')
+    setEmail('')
 }
 
 return (
@@ -47,7 +92,7 @@ return (
                 <h6>Basic information</h6>
                 <div className='top'>
                     <div className='basic_input'>
-                        <input  placeholder={ user ? user.displayName : ""} 
+                        <input  placeholder={userDetails.username} 
                                 value={name}
                                 type="text"
                                 id="name"
@@ -55,7 +100,7 @@ return (
                                 name="name"/>
                         <br />
                         <div className='about_me'>
-                            <input type="text" placeholder='About me (optional)'
+                            <input type="text" placeholder={userDetails.about}
                             	id="about"
                                 value={about}
                                 onChange={(e)=>setAbout(e.target.value)}
@@ -85,7 +130,8 @@ return (
                     <div className='contact_input'>
                     <div className="contact_number">
                         <p>+91</p>
-                        <input type="text"
+                        <input placeholder={userDetails.phone}
+                               type="text"
                                id="number"
                                value={number}
                                onChange={(e)=>setNumber(e.target.value)}
@@ -94,12 +140,10 @@ return (
                             <ArrowForwardIos/>
                         </IconButton>
                     </div>
-                    {/* <input type="text"/> */}
                     <br />
-                    {/* <input value={user ? user.email : ""} type="text" /> */}
                     <div className="contact_email">
                         {/* <input value={user ? user.email : ""} type="text" /> */}
-                        <input placeholder={user ? user.email : ""}
+                        <input placeholder={userDetails.email}
                                         type="text"
                                         id="email"
                                         value={email}
@@ -117,7 +161,6 @@ return (
                         </div>
                     </div>
                 </div> 
-                {/* <hr /> */}
                     <h6>Additional information</h6>
                     <div className='additional_info'>
                         <div className='google'>
@@ -128,19 +171,13 @@ return (
                             <button>Unlink</button>
                         </div>
                     </div>
-               
-                {/* <hr /> */}
                 <div className='save'>
                     <div className='discard'>
-                        <a href="">Discard</a>
+                        <button onClick={clearDetails}>Discard</button>
                     </div>
                     <button onClick={handleSubmit}>Save changes</button>
-                   
                 </div>
-            
-                
             </div>
-
     </div>
   )
 }

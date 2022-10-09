@@ -316,11 +316,13 @@
     margin-top: 15px;
 }
 
-.discard>a
+.discard>button
 {
     font-weight: 600;
     font-size: 16px;
     color: #002f34;
+    border: none;
+    background: transparent;
 }
 
 .main_left

@@ -284,11 +284,12 @@ margin-bottom: 5px;
   margin-top: 10px;
 }
 
-.settings>a
+.settings>span
 {
   text-decoration:underline;
   color: black;
   font-size: 14px;
+  cursor: pointer;
 }
 
 .details

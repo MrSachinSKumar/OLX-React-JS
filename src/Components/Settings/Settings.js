@@ -14,7 +14,6 @@ function Settings()
   const [password, setPassword] = useState('')
   const [oldPassword, setOldPassword] = useState('')
   
-  
   const deleteAccount=()=>
   {
     confirmAlert({
@@ -25,29 +24,40 @@ function Settings()
          label: 'DELETE',
          onClick: () =>
          {
-          const auth = getAuth();
-          const authuser = auth.currentUser;
-
-          deleteUser(authuser).then(() => 
-          {
-            firebase.firestore().collection('users').where('id','==', user.uid).get().then(function(querySnapshot){
-              querySnapshot.forEach(function(document){
-              document.ref.delete()
-            })
+            firebase.firestore().collection('users').where('id','==',user.uid).get().then((response)=>
+            {
+                response.forEach(document=>
+                {
+                  document.ref.delete()
+                })
             })
 
-          }).catch((error) => 
-          {
-
-          });
-
+            firebase.firestore().collection('products').where('userId','==',user.uid).get().then((response)=>
+            {
+                response.forEach(document=>
+                {
+                  document.ref.delete()
+                })
+            })
+          
+          deleteAuth()
           alert('Account deleted')
           navigate('/login')
         }},
          {label: 'CANCEL'}]
      });
   }
-  console.log(user);
+  const deleteAuth=()=>
+  {
+    const auth = getAuth();
+    const authuser = auth.currentUser;
+
+    deleteUser(authuser).then(() => 
+    {
+    }).catch((error) => 
+    {
+    });      
+  }
 
   const logout=()=>
   {
@@ -68,7 +78,14 @@ function Settings()
 
   const changePassword=()=>
   {
-    if(password===oldPassword)
+    if(password==='' || oldPassword==='')
+    {
+      alert('All fields are mandatory')
+    }else if(password==='' && oldPassword==='')
+    {
+      alert('All fields are mandatory')
+    }
+    else if(password===oldPassword)
     {
     confirmAlert({
        title: 'Change password',
@@ -93,8 +110,7 @@ function Settings()
         }},
          {label: 'Cancel'}]
      });
-    }
-    else
+    }else
     {
       window.alert('Password mismatching')
     }
@@ -106,7 +122,7 @@ function Settings()
         <p>Privacy</p>
         <p>Notifications</p>
         <p onClick={logout}>Logout from all devices</p>
-        <p onClick={deleteAccount}>Delete account</p>
+        <p onClick={(e)=> {deleteAccount(e)}}>Delete account</p>
         <p>Chat safety tips</p>
       </div>
       <div className='password'>

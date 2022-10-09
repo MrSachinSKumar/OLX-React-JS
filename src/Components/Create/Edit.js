@@ -1,12 +1,14 @@
 import { ArrowBack } from '@mui/icons-material'
 import { IconButton } from '@mui/material'
 import React, { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { FirebaseContext } from '../../Store/Context'
+import { useEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { AuthContext, FirebaseContext } from '../../Store/Context'
 import { PostContext } from '../../Store/PostContext'
 
 function Edit() 
 {
+    const {user} = useContext(AuthContext)
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
@@ -17,7 +19,26 @@ function Edit()
     const {firebase}=useContext(FirebaseContext)
     const navigate=useNavigate()
     const {postDetails} = useContext(PostContext)
+    const [productDetails, setProductDetails] = useState(null)
 
+    const location=useLocation()
+    const product=location.pathname
+    const url=product
+    const path = url.split("/");
+    const productId=path[2]
+
+    useEffect(() => 
+    {
+      async function fetchData() 
+      {
+      const productDetails= await firebase.firestore().collection('products').doc(productId).get()
+      setProductDetails(productDetails.data())
+      }
+      fetchData()
+    }, [productId,firebase])
+
+    if (!productDetails) return ' '
+    
     const handleSubmit=()=>
     {
       firebase.storage().ref(`/image/${image.name}`).put(image).then(({ref})=>//name is available because of blob type
@@ -37,21 +58,21 @@ function Edit()
         })
     })
     alert("Details updated")
-    navigate('/myads')  
+    navigate(`/myads/${user.uid}`)  
     }
   
-    const createChat=()=>
+    const exitPage=()=>
     {
         if (window.confirm("Are you sure you want to leave? Your progress will not be saved")) 
         {
-          navigate('/myads')
+          navigate(`/myads/${user.uid}`)  
         }
     }
   return (
     <div>
     <div className='footer_header'>
       <IconButton>
-        <ArrowBack onClick={createChat}/>
+        <ArrowBack onClick={exitPage}/>
       </IconButton>
     </div>
     <div className='post_ad'>
@@ -80,7 +101,7 @@ function Edit()
                   name="type"/> */}
           <div className='category_ad_title_main'>
             <p>Ad title *</p>
-            <input  placeholder={postDetails.title}
+            <input  placeholder={productDetails.title}
                     type="text" 
                     id="title"
                     value={title}
@@ -90,7 +111,7 @@ function Edit()
             <p1>A minimum length of 10 characters is required. Please edit the field.</p1>
           <div className='category_ad_desc'>
             <p>Description *</p>
-            <input  placeholder={postDetails.description}
+            <input  placeholder={productDetails.description}
                     type="text"
                     id="description"
                     value={description}
@@ -107,7 +128,7 @@ function Edit()
             {/* <input type="text" /> */}
             <div className="category_ad_number">
               <p className="category_price_logo">&#x20B9;</p>
-              <input placeholder={postDetails.price}
+              <input placeholder={productDetails.price}
                             type="text"
                             id="price"
                             value={price}
@@ -119,7 +140,8 @@ function Edit()
         <div className="category_ad_upload">
           <p>UPLOAD PHOTO</p>
 
-          <img alt="Posts" width="200px" height="200px" src={image? URL.createObjectURL(image):"  "}></img>
+          {/* <img alt="" width="200px" height="200px" src={image? URL.createObjectURL(image):"  "}></img> */}
+          <img alt="" width="200px" height="200px" src={image? URL.createObjectURL(image): productDetails.url}/>
           <br />
           <input onChange={(e)=>{
             setImage(e.target.files[0])
@@ -133,7 +155,7 @@ function Edit()
           <p>CONFIRM YOUR LOCATION</p>
           <div className="category_ad_title">
             <p>State *</p>
-            <input placeholder={postDetails.state}
+            <input placeholder={productDetails.state}
                         type="text"
                           id="state"
                           value={state}
@@ -142,7 +164,7 @@ function Edit()
           </div>
           <div className="category_ad_title">
             <p>City *</p>
-            <input  placeholder={postDetails.city}
+            <input  placeholder={productDetails.city}
                     type="text"
                     id="city"
                     value={city}
@@ -151,7 +173,7 @@ function Edit()
           </div>
           <div className="category_ad_title">
             <p>Neighbourhood *</p>
-            <input  placeholder={postDetails.neighbourhood}
+            <input  placeholder={productDetails.neighbourhood}
                     type="text"
                     id="neighbourhood"
                     value={neighbourhood}

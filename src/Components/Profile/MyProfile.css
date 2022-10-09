@@ -2,6 +2,8 @@
 {
     display: flex;
     padding: 35px;
+    padding-left: 0;
+    padding-right: 0;
     padding-top: 50px;
 }
 
@@ -155,18 +157,21 @@ padding-top: 0;
 {
     display: flex;
     align-items: center;
-    padding-bottom: 30px;
-    border-bottom: 1px solid gray
+    border-bottom: 1px solid gray;
+    padding: 35px;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .MyProfile_User_Details>h1
 {
-    margin-top: 20px;
+    margin: 0
 }
 
 .MyProfile_User_Details>button
 {
-   margin-left: 15px;
+   margin-left: auto;
+   float: right;
 }
 
 
@@ -221,3 +226,10 @@ padding-top: 0;
 {
 margin: 0;
 }
+
+.User_Details
+{
+    margin-left: 35px;
+    margin-right: 35px;
+}
+

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext} from 'react';
 import {useNavigate} from 'react-router-dom'
 import './Header.css';
 import OlxLogo from '../../assets/OlxLogo';
@@ -17,23 +17,7 @@ function Header()
   const {user} = useContext(AuthContext)
   const {firebase}=useContext(FirebaseContext)
   const navigate=useNavigate()
-  const [products, setProducts] = useState([])
 
-  useEffect(() => 
-  {
-    firebase.firestore().collection('products').get().then((snapshot)=>
-    {
-      const allPost=snapshot.docs.map((product)=>
-      {
-        return{
-          ...product.data(),
-          id:product.id
-        }
-      })
-      setProducts(allPost)
-    })
-  },[firebase])
-  
   return (
     <div className="headerParentDiv">
       <div className="headerChildDiv">
@@ -175,13 +159,13 @@ function Header()
                 <p>Hello,</p>
                 <h5>{ user ? user.displayName : ""}</h5>
                 {/* <a href="" onClick={()=>navigate('/profile')}>View and edit profile</a> */}
-                  <a onClick={()=>navigate('/profile')} href="">View and edit profile</a>
+                  <span onClick={()=>navigate(`/profile/${user.uid}`)}>View and edit profile</span>
               </div>
             </div>
             <div className='popup_others'>
                   {/* <p onClick={()=>navigate('/myads')}>My Ads</p> */}
                   <p onClick={()=>{
-                                    navigate('/myads')
+                                  navigate(`/myads/${user.uid}`)
                                   }}>My Ads</p>
                   <p>Buy Business Packages</p>
                   <p>Bought Packages & Billing</p>

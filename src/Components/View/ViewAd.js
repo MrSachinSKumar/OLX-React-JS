@@ -8,23 +8,11 @@ import './View.css';
 
 function ViewAd() 
 {
-    const [userDetails, setUserDetails] = useState([])
   const {postDetails} = useContext(PostContext)
   const {firebase}= useContext(FirebaseContext)
   const [products, setProducts] = useState([])
   const navigate=useNavigate()
   const {setPostDetails}=useContext(PostContext)
-
-  useEffect(() => 
-  {
-    const {userId}=postDetails
-   firebase.firestore().collection('users').where('id','==',userId).get().then((response)=>
-   {
-      response.forEach(document=>{
-      setUserDetails(document.data())
-    })
-   })
-  },[firebase,postDetails])
 
   useEffect(() => 
   {
@@ -135,9 +123,6 @@ function ViewAd()
         }
         </div>
       </div>
-
-
-
    </div>
    <div className='ad_details_right'>
 
@@ -180,7 +165,7 @@ function ViewAd()
          </div>
        </div>
      </div>
-    { userDetails && <div className="ad_contact_details">
+    { postDetails && <div className="ad_contact_details">
        {/* <p>Seller details</p>
        <p>{userDetails.username}</p>
        <p>{userDetails.phone}</p> */}
